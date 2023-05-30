@@ -1,0 +1,1 @@
+docker build -t izahat-bot-image . && docker run -d -e TOKEN=<your_token> --name izahat-bot izahat-bot-image
