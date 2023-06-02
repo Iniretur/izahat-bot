@@ -1,6 +1,7 @@
 import logging
 from telegram import InlineQueryResultArticle, InputTextMessageContent, Update
 from telegram.ext import Updater, InlineQueryHandler, CallbackContext
+import pytz
 import datetime
 import secrets
 import string
@@ -36,13 +37,14 @@ def generate_random_id():
     return random_string
 
 def get_current_date() -> str:
-    # Get the current local time
-    current_time = datetime.datetime.now()
+    # Get the current Bakı time
+    baku_tz = pytz.timezone('Asia/Baku')
+    current_time = datetime.datetime.now(baku_tz)
 
     # Get the day, month, hour, and minute components
     day = current_time.day
     month = current_time.month
-    hour = current_time.hour + 4
+    hour = current_time.hour
     minute = current_time.minute
 
     # Format the month name in Azerbaijani
