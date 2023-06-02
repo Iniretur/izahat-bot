@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Install the dependencies
 RUN pip install python-telegram-bot==13.13
+RUN pip install pytz
 
 # Copy the bot files into the container
 COPY . .
