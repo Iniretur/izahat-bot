@@ -244,7 +244,10 @@ def inline_command(update: Update, context: CallbackContext) -> None:
             )
         results.append(setup_article)
 
-    update.inline_query.answer(results, cache_time=0)
+    try:
+        update.inline_query.answer(results, cache_time=0)
+    except Exception as e:
+        logger.error(f"Failed to answer inline query: {e}")
 
 def chosen_result_handler(update: Update, context: CallbackContext) -> None:
     result = update.chosen_inline_result
