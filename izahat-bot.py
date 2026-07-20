@@ -46,6 +46,14 @@ def format_ua_date(current_time, month_name):
     preposition = "об" if hour == 11 else "о"
     return f"{current_time.day} {month_name} {preposition} {hour:02d}:{current_time.minute:02d}"
 
+def format_us_date(current_time, month_name):
+    return f"{month_name} {current_time.day} at {current_time.strftime('%I:%M %p')}"
+
+def format_ce_date(current_time, month_name):
+    return f"{current_time.day} {month_name}хь, сахьт {current_time.strftime('%H:%M')}"
+
+BASE_THUMB_URL = "https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/{}_{}.png"
+
 LANGUAGES = {
     "az": {
         "tz": "Asia/Baku",
@@ -66,11 +74,11 @@ LANGUAGES = {
             "unauthorized_click": "Bir dəqiqə xətdə qal"
         },
         "items": [
-            {'title': '🖼️ Şəkil izahatı', 'desc': 'Gördüyüm şəkilə görə izahat', 'text': 'gördüyüm şəkil', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/image_az.png'},
-            {'title': '🎞️ Video izahatı', 'desc': 'Gördüyüm videoya görə izahat', 'text': 'gördüyüm video', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/video_az.png'},
-            {'title': '👂 Səs izahatı', 'desc': 'Eşitdiyim səsə görə izahat', 'text': 'eşitdiyim səs', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/sound_az.png'},
-            {'title': '📃 Mətn izahatı', 'desc': 'Oxuduğum mətnə görə izahat', 'text': 'oxuduğum mətn', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/text_az.png'},
-            {'title': '🫁 Oksigen izahatı', 'desc': 'Nəfəs aldığım havaya görə izahat', 'text': 'nəfəs aldığım hava', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/air_az.png'}
+            {'title': '🖼️ Şəkil izahatı', 'desc': 'Gördüyüm şəkilə görə izahat', 'text': 'gördüyüm şəkil', 'key': 'image'},
+            {'title': '🎞️ Video izahatı', 'desc': 'Gördüyüm videoya görə izahat', 'text': 'gördüyüm video', 'key': 'video'},
+            {'title': '👂 Səs izahatı', 'desc': 'Eşitdiyim səsə görə izahat', 'text': 'eşitdiyim səs', 'key': 'sound'},
+            {'title': '📃 Mətn izahatı', 'desc': 'Oxuduğum mətnə görə izahat', 'text': 'oxuduğum mətn', 'key': 'text'},
+            {'title': '🫁 Oksigen izahatı', 'desc': 'Nəfəs aldığım havaya görə izahat', 'text': 'nəfəs aldığım hava', 'key': 'air'}
         ]
     },
     "ua": {
@@ -92,23 +100,75 @@ LANGUAGES = {
             "unauthorized_click": "Пiшов нахуй, це не твоє"
         },
         "items": [
-            {'title': '🖼️ Пояснювальна за фото', 'desc': 'Пояснення щодо побаченого фото', 'text': 'побаченого фото', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/image_ua.png'},
-            {'title': '🎞️ Пояснювальна за відео', 'desc': 'Пояснення щодо побаченого відео', 'text': 'побаченого відео', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/video_ua.png'},
-            {'title': '👂 Пояснювальна за аудіо', 'desc': 'Пояснення щодо почутого звуку', 'text': 'почутого звуку', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/sound_ua.png'},
-            {'title': '📃 Пояснювальна за текст', 'desc': 'Пояснення щодо прочитаного тексту', 'text': 'прочитаного тексту', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/text_ua.png'},
-            {'title': '🫁 Пояснювальна за повітря', 'desc': 'Пояснення щодо повітря, яким дихаю', 'text': 'повітря, яким дихаю', 'thumb': 'https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/air_ua.png'}
+            {'title': '🖼️ Пояснювальна за фото', 'desc': 'Пояснення щодо побаченого фото', 'text': 'побаченого фото', 'key': 'image'},
+            {'title': '🎞️ Пояснювальна за відео', 'desc': 'Пояснення щодо побаченого відео', 'text': 'побаченого відео', 'key': 'video'},
+            {'title': '👂 Пояснювальна за аудіо', 'desc': 'Пояснення щодо почутого звуку', 'text': 'почутого звуку', 'key': 'sound'},
+            {'title': '📃 Пояснювальна за текст', 'desc': 'Пояснення щодо прочитаного тексту', 'text': 'прочитаного тексту', 'key': 'text'},
+            {'title': '🫁 Пояснювальна за повітря', 'desc': 'Пояснення щодо повітря, яким дихаю', 'text': 'повітря, яким дихаю', 'key': 'air'}
+        ]
+    },
+    "us": {
+        "tz": "America/New_York",
+        "months": {
+            1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
+            7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"
+        },
+        "date_formatter": format_us_date,
+        "message_format": "I would like to state that I have no connection to {item} on {date}.",
+        "ui": {
+            "setup_title": "🌐 Language Selection",
+            "setup_desc": "Tap here to change your language",
+            "setup_msg": "Choose your language:",
+            "limit_title": "🚫 Limit",
+            "spam_msg": "I can't breathe",
+            "success_msg": "Language selected. Call the bot again to write an explanation.",
+            "success_edit": "🇺🇸 English",
+            "unauthorized_click": "Hold on a second!"
+        },
+        "items": [
+            {'title': '🖼️ Photo explanation', 'desc': 'Explanation regarding the photo seen', 'text': 'the photo seen', 'key': 'image'},
+            {'title': '🎞️ Video explanation', 'desc': 'Explanation regarding the video seen', 'text': 'the video seen', 'key': 'video'},
+            {'title': '👂 Audio explanation', 'desc': 'Explanation regarding the sound heard', 'text': 'the sound heard', 'key': 'sound'},
+            {'title': '📃 Text explanation', 'desc': 'Explanation regarding the text read', 'text': 'the text read', 'key': 'text'},
+            {'title': '🫁 Air explanation', 'desc': 'Explanation regarding the air breathed', 'text': 'the air breathed', 'key': 'air'}
+        ]
+    },
+    "ce": {
+        "tz": "Europe/Moscow",
+        "months": {
+            1: "январь", 2: "февраль", 3: "март", 4: "апрель", 5: "май", 6: "июнь",
+            7: "июль", 8: "август", 9: "сентябрь", 10: "октябрь", 11: "ноябрь", 12: "декабрь"
+        },
+        "date_formatter": format_ce_date,
+        "message_format": "Ас хаъийта лаьа, суна цхьан а юкъабезам бац {date} {item}ца.",
+        "ui": {
+            "setup_title": "🌐 Метта харжар",
+            "setup_desc": "Метта хийца кӀужал де",
+            "setup_msg": "Харжа мотт:",
+            "limit_title": "🚫 Лимит",
+            "spam_msg": "Дон",
+            "success_msg": "Мотт хаьржира. Юха а кхайккха бот.",
+            "success_edit": "🇷🇺 Нохчийн",
+            "unauthorized_click": "Хьан бакъо яц цуьнца!"
+        },
+        "items": [
+            {'title': '🖼️ Суьртах тидамаш', 'desc': 'Гена суьртах тидамаш', 'text': 'гуш долу сурт', 'key': 'image'},
+            {'title': '🎞️ Видеох тидамаш', 'desc': 'Гена видеох тидамаш', 'text': 'гуш йолу видео', 'key': 'video'},
+            {'title': '👂 Азлах тидамаш', 'desc': 'Хаза аздах тидамаш', 'text': 'хезаш долу аз', 'key': 'sound'},
+            {'title': '📃 Йозанах тидамаш', 'desc': 'Дешна йозанах тидамаш', 'text': 'дешаш долу йоза', 'key': 'text'},
+            {'title': '🫁 ХӀаванах тидамаш', 'desc': 'Сурсатал хӀаванах тидамаш', 'text': 'са тоьхна хӀаван', 'key': 'air'}
         ]
     },
     "en": {
         "ui": {
             "setup_title": "🌐 Select language",
-            "setup_desc": "Tap here to select your language",
+            "setup_desc": "",
             "setup_msg": "Choose your language:",
             "limit_title": "🚫 Limit",
-            "spam_msg": "Do not spam! Please wait.",
+            "spam_msg": "Wait for a second.",
             "success_msg": "Language selected. Call the bot again.",
             "success_edit": "✅ Selected",
-            "unauthorized_click": "This button is not for you!"
+            "unauthorized_click": "I can't breathe"
         }
     }
 }
@@ -143,7 +203,9 @@ def inline_command(update: Update, context: CallbackContext) -> None:
 
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🇦🇿 Azərbaycanca", callback_data=f"setlang_az_{user_id}")],
-        [InlineKeyboardButton("🇺🇦 Українська", callback_data=f"setlang_ua_{user_id}")]
+        [InlineKeyboardButton("🇺🇦 Українська", callback_data=f"setlang_ua_{user_id}")],
+        [InlineKeyboardButton("🇺🇸 English", callback_data=f"setlang_us_{user_id}")],
+        [InlineKeyboardButton("🇷🇺 Нохчийн", callback_data=f"setlang_ce_{user_id}")]
     ])
 
     if setups_count >= 3:
@@ -151,7 +213,7 @@ def inline_command(update: Update, context: CallbackContext) -> None:
             id=generate_random_id() + "_spam",
             title=ui["limit_title"],
             description=ui["spam_msg"],
-            thumb_url="https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/lang_spam.png",
+            thumb_url=BASE_THUMB_URL.format("lang", "spam"),
             input_message_content=InputTextMessageContent(ui["spam_msg"])
         )
     else:
@@ -159,7 +221,7 @@ def inline_command(update: Update, context: CallbackContext) -> None:
             id=generate_random_id() + "_setup",
             title=ui["setup_title"],
             description=ui["setup_desc"],
-            thumb_url="https://raw.githubusercontent.com/Iniretur/izahat-bot/refs/heads/master/assets/lang.png",
+            thumb_url=BASE_THUMB_URL.format("lang", ""),
             input_message_content=InputTextMessageContent(ui["setup_msg"]),
             reply_markup=keyboard
         )
@@ -170,12 +232,13 @@ def inline_command(update: Update, context: CallbackContext) -> None:
         lang_data = LANGUAGES[lang_code]
         for item in lang_data["items"]:
             msg_content = get_formatted_message(lang_code, item["text"])
+            thumb_url = BASE_THUMB_URL.format(item["key"], lang_code)
             results.append(
                 InlineQueryResultArticle(
                     id=generate_random_id() + "_item",
                     title=item["title"],
                     description=item["desc"],
-                    thumb_url=item["thumb"],
+                    thumb_url=thumb_url,
                     input_message_content=InputTextMessageContent(msg_content)
                 )
             )
