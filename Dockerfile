@@ -12,4 +12,4 @@ RUN pip install pytz
 COPY . .
 
 # Run the bot script when the container starts
-CMD ["python", "izahat-bot.py"]
+CMD ["python", "bot.py"]

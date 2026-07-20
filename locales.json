@@ -1,0 +1,230 @@
+{
+    "az": {
+        "tz": "Asia/Baku",
+        "months": {
+            "1": "yanvar",
+            "2": "fevral",
+            "3": "mart",
+            "4": "aprel",
+            "5": "may",
+            "6": "iyun",
+            "7": "iyul",
+            "8": "avqust",
+            "9": "sentyabr",
+            "10": "oktyabr",
+            "11": "noyabr",
+            "12": "dekabr"
+        },
+        "message_format": "Yazıb bildirmək istəyirəm ki, {date} {item} ilə heç bir əlaqəm yoxdur.",
+        "ui": {
+            "setup_title": "🌐 Dil seçimi",
+            "setup_desc": "Dili dəyişmək üçün toxunun",
+            "setup_msg": "Dil seçin:",
+            "limit_title": "🚫 Limit",
+            "spam_msg": "Bəlkə biraz yavaşlayaq?",
+            "success_msg": "Dil seçildi. İzahat yazmaq üçün, botu yenidən çağırın.",
+            "success_edit": "🇦🇿 Azərbaycanca",
+            "unauthorized_click": "Bir dəqiqə xətdə qal"
+        },
+        "items": [{
+            "title": "🖼️ Şəkil izahatı",
+            "desc": "Gördüyüm şəkilə görə izahat",
+            "text": "gördüyüm şəkil",
+            "key": "image"
+        }, {
+            "title": "🎞️ Video izahatı",
+            "desc": "Gördüyüm videoya görə izahat",
+            "text": "gördüyüm video",
+            "key": "video"
+        }, {
+            "title": "👂 Səs izahatı",
+            "desc": "Eşitdiyim səsə görə izahat",
+            "text": "eşitdiyim səs",
+            "key": "sound"
+        }, {
+            "title": "📃 Mətn izahatı",
+            "desc": "Oxuduğum mətnə görə izahat",
+            "text": "oxuduğum mətn",
+            "key": "text"
+        }, {
+            "title": "🫁 Oksigen izahatı",
+            "desc": "Nəfəs aldığım havaya görə izahat",
+            "text": "nəfəs aldığım hava",
+            "key": "air"
+        }]
+    },
+    "ua": {
+        "tz": "Europe/Kyiv",
+        "months": {
+            "1": "січня",
+            "2": "лютого",
+            "3": "березня",
+            "4": "квітня",
+            "5": "травня",
+            "6": "червня",
+            "7": "липня",
+            "8": "серпня",
+            "9": "вересня",
+            "10": "жовтня",
+            "11": "листопада",
+            "12": "грудня"
+        },
+        "message_format": "Хочу повідомити, що не маю жодного відношення до {item} {date}.",
+        "ui": {
+            "setup_title": "🌐 Вибір мови",
+            "setup_desc": "Натисніть тут, щоб змінити мову",
+            "setup_msg": "Оберіть мову:",
+            "limit_title": "🚫 Ліміт",
+            "spam_msg": "Пiшов нахуй",
+            "success_msg": "Мову обрано. Щоб написати пояснювальну, викличте бота знову.",
+            "success_edit": "🇺🇦 Українська",
+            "unauthorized_click": "Пiшов нахуй, це не твоє"
+        },
+        "items": [{
+            "title": "🖼️ Пояснювальна за фото",
+            "desc": "Пояснення щодо побаченого фото",
+            "text": "побаченого фото",
+            "key": "image"
+        }, {
+            "title": "🎞️ Пояснювальна за відео",
+            "desc": "Пояснення щодо побаченого відео",
+            "text": "побаченого відео",
+            "key": "video"
+        }, {
+            "title": "👂 Пояснювальна за аудіо",
+            "desc": "Пояснення щодо почутого звуку",
+            "text": "почутого звуку",
+            "key": "sound"
+        }, {
+            "title": "📃 Пояснювальна за текст",
+            "desc": "Пояснення щодо прочитаного тексту",
+            "text": "прочитаного тексту",
+            "key": "text"
+        }, {
+            "title": "🫁 Пояснювальна за повітря",
+            "desc": "Пояснення щодо повітря, яким дихаю",
+            "text": "повітря, яким дихаю",
+            "key": "air"
+        }]
+    },
+    "us": {
+        "tz": "America/New_York",
+        "months": {
+            "1": "January",
+            "2": "February",
+            "3": "March",
+            "4": "April",
+            "5": "May",
+            "6": "June",
+            "7": "July",
+            "8": "August",
+            "9": "September",
+            "10": "October",
+            "11": "November",
+            "12": "December"
+        },
+        "message_format": "I would like to state that I have no connection to {item} on {date}.",
+        "ui": {
+            "setup_title": "🌐 Language Selection",
+            "setup_desc": "Tap here to change your language",
+            "setup_msg": "Choose your language:",
+            "limit_title": "🚫 Limit",
+            "spam_msg": "I can't breathe",
+            "success_msg": "Language selected. Call the bot again to write an explanation.",
+            "success_edit": "🇺🇸 English",
+            "unauthorized_click": "Hold on a second!"
+        },
+        "items": [{
+            "title": "🖼️ Photo explanation",
+            "desc": "Explanation regarding the photo seen",
+            "text": "the photo seen",
+            "key": "image"
+        }, {
+            "title": "🎞️ Video explanation",
+            "desc": "Explanation regarding the video seen",
+            "text": "the video seen",
+            "key": "video"
+        }, {
+            "title": "👂 Audio explanation",
+            "desc": "Explanation regarding the sound heard",
+            "text": "the sound heard",
+            "key": "sound"
+        }, {
+            "title": "📃 Text explanation",
+            "desc": "Explanation regarding the text read",
+            "text": "the text read",
+            "key": "text"
+        }, {
+            "title": "🫁 Air explanation",
+            "desc": "Explanation regarding the air breathed",
+            "text": "the air breathed",
+            "key": "air"
+        }]
+    },
+    "ce": {
+        "tz": "Europe/Moscow",
+        "months": {
+            "1": "январь",
+            "2": "февраль",
+            "3": "март",
+            "4": "апрель",
+            "5": "май",
+            "6": "июнь",
+            "7": "июль",
+            "8": "август",
+            "9": "сентябрь",
+            "10": "октябрь",
+            "11": "ноябрь",
+            "12": "декабрь"
+        },
+        "message_format": "Ас хаъийта лаьа, суна цхьан а юкъабезам бац {date} {item}ца.",
+        "ui": {
+            "setup_title": "🌐 Метта харжар",
+            "setup_desc": "Метта хийца кӀужал де",
+            "setup_msg": "Харжа мотт:",
+            "limit_title": "🚫 Лимит",
+            "spam_msg": "Дон",
+            "success_msg": "Мотт хаьржира. Юха а кхайккха бот.",
+            "success_edit": "🇷🇺 Нохчийн",
+            "unauthorized_click": "Хьан бакъо яц цуьнца!"
+        },
+        "items": [{
+            "title": "🖼️ Суьртах тидамаш",
+            "desc": "Гена суьртах тидамаш",
+            "text": "гуш долу сурт",
+            "key": "image"
+        }, {
+            "title": "🎞️ Видеох тидамаш",
+            "desc": "Гена видеох тидамаш",
+            "text": "гуш йолу видео",
+            "key": "video"
+        }, {
+            "title": "👂 Азлах тидамаш",
+            "desc": "Хаза аздах тидамаш",
+            "text": "хезаш долу аз",
+            "key": "sound"
+        }, {
+            "title": "📃 Йозанах тидамаш",
+            "desc": "Дешна йозанах тидамаш",
+            "text": "дешаш долу йоза",
+            "key": "text"
+        }, {
+            "title": "🫁 ХӀаванах тидамаш",
+            "desc": "Сурсатал хӀаванах тидамаш",
+            "text": "са тоьхна хӀаван",
+            "key": "air"
+        }]
+    },
+    "en": {
+        "ui": {
+            "setup_title": "🌐 Select language",
+            "setup_desc": "",
+            "setup_msg": "Choose your language:",
+            "limit_title": "🚫 Limit",
+            "spam_msg": "Wait for a second.",
+            "success_msg": "Language selected. Call the bot again.",
+            "success_edit": "✅ Selected",
+            "unauthorized_click": "I can't breathe"
+        }
+    }
+}
